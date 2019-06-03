@@ -1,3 +1,27 @@
 <mat-toolbar>
-  <div style="float:left">On Push - why and when <b style="color:yellow">Demo</b></div> <div style="color:greenyellow; float: right"> Default strategy </div>
+  <div style="float:left">On Push - why and when <b style="color:yellow">Demo</b></div>
+  <div style="color:greenyellow; float: right"> Default strategy </div>
 </mat-toolbar>
+
+<main>
+  <demo-comp1 [text]="textOfComp1"></demo-comp1>
+
+  <demo-comp5 [text]="textOfComp5">
+    <demo-comp51 [text]="textOfComp51"></demo-comp51>
+    <demo-comp52 [text]="textOfComp52"></demo-comp52>
+    <demo-comp53 [text]="textOfComp53"></demo-comp53>
+  </demo-comp5>
+
+  <div>
+    <mat-form-field class="example-full-width">
+      <input #input matInput placeholder="Type something" value="What?!">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="changeComponent1(input.value)"> Change component 1 </button>
+    <button mat-raised-button (click)="changeComponent5(input.value)"> Change component 5 </button>
+    <button mat-raised-button color="accent" (click)="changeComponent51(input.value)"> Change component 5.1 </button>
+    <button mat-raised-button (click)="changeComponent52(input.value)"> Change component 5.2 </button>
+    <button mat-raised-button color="accent" (click)="changeComponent53(input.value)"> Change component 5.3 </button>
+  </div>
+
+</main>
