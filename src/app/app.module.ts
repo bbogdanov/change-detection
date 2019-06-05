@@ -7,31 +7,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { Comp1Component } from './comp1/comp1.component';
-import { Comp5Component } from './comp5/comp5.component';
-import { Comp51Component } from './comp5/comp51/comp51.component';
-import { Comp52Component } from './comp5/comp52/comp52.component';
-import { Comp53Component } from './comp5/comp53/comp53.component';
+import { SearchModule } from './search/search.module';
+import { HttpClientModule } from '@angular/common/http';
+import { StarWarsModule } from './star-wars/star-wars.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotificationCenterService } from './notification-center.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    Comp1Component,
-    Comp5Component,
-    Comp51Component,
-    Comp52Component,
-    Comp53Component
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+
+    SearchModule,
+    StarWarsModule,
 
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    NotificationCenterService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

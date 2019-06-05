@@ -6,29 +6,35 @@
   }
 
   main {
-    display: flex;
-    justify-content: space-between;
-    // flex-flow: row wrap;
+    height: 100%;
+    width: 100%;
 
-    margin: 1em;
-
-    > div {
+    header {
       display: flex;
-      flex-direction: column;
+      width: 100%;
+
+      demo-search-field {
+        margin: auto;
+
+        ::ng-deep .mat-form-field-label {
+          color: black;
+        }
+
+        ::ng-deep .mat-form-field-underline {
+          background-color: black;
+        }
+      }
     }
 
-    demo-comp1, demo-comp5 {
-      box-sizing: border-box;
-      margin: auto;
+    div.main {
+      display: flex;
+      flex-wrap: wrap;
+      flex-flow: row wrap;
 
-      padding: 3em;
-
-      border: 1px solid red;
-      text-align: center;
+      demo-character {
+        flex: 1 0 21%; /* explanation below */
+        margin: 5px;
+      }
     }
-  }
-
-  button {
-    margin: 1em;
   }
 }

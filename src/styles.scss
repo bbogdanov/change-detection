@@ -3,7 +3,11 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.changed {
+.changesAreTriggered {
   color: white;
   background: rgb(6, 248, 135);
+
+  mat-card {
+    background-color: yellowgreen;
+  }
 }
