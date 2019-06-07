@@ -1,50 +1,42 @@
-import { Component, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { EditMode } from './utils/edit-mode/edit-mode';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { NotificationCenterService } from './notification-center.service';
-import { Character } from './star-wars/character/character.contract';
+import { AccountService } from './chat/account.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'demo-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent extends EditMode implements OnChanges {
-  characters: Character[];
+export class AppComponent implements OnInit {
 
-  private getCharacters = this.http.get('https://swapi.co/api/people');
-
-  private allCharacters: Character[];
+  globalMessage: { value: string };
 
   constructor(
-    private http: HttpClient,
+    public accountService: AccountService,
+    private socket: Socket,
     notificationCenter: NotificationCenterService,
     element: ElementRef
   ) {
-    super(element, notificationCenter);
+  }
 
-    this.getCharacters.subscribe((data: any) => {
-      console.log(data);
-      this.characters = data.results;
-      this.allCharacters = data.results;
+  ngOnInit() {
+    this.socket.on('globalMessage', (message: { value: string }) => {
+     this.globalMessage = message;
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    super.ngOnChanges(changes);
-    this.notificationCenter.notify({
-      message: 'Changes',
-      action: 'Application root'
-    });
+  changeGlobalMessage(value: string) {
+    this.socket.emit('globalMessage', { value });
   }
 
   searchFor(text: string) {
-    if (text) {
-      this.characters = this.allCharacters.filter(character => {
-        return character.name.indexOf(text) > -1;
-      });
-    } else {
-      this.characters = this.allCharacters;
-    }
+    // if (text) {
+    //   this.characters = this.allCharacters.filter(character => {
+    //     return character.name.indexOf(text) > -1;
+    //   });
+    // } else {
+    //   this.characters = this.allCharacters;
+    // }
   }
 }

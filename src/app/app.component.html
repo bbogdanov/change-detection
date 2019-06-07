@@ -1,16 +1,12 @@
-<mat-toolbar>
-  <div style="float:left">On Push - why and when <b style="color: #693761a4">Demo</b></div>
-  <div style="color:rgb(25, 105, 101); float: right"> Default strategy </div>
+<mat-toolbar style="display: flex">
+  <div style="display: block; flex:1;">On Push - why and when <b style="color: #693761a4">Demo</b></div>
+  <div style="display: block; flex: 1;color:rgb(25, 105, 101);"> Default strategy </div>
 </mat-toolbar>
 
-<main>
-    <header>
-        <demo-search-field (searchFor)="searchFor($event)"></demo-search-field>
-    </header>
+<mat-form-field *ngIf="accountService.user && accountService.user.name === 'Admin'">
+    <input matInput placeholder="Notification for everyone..." #global (change)="changeGlobalMessage(global.value)" type="text" />
+</mat-form-field>
 
-    <div class="main">
-      <ng-container *ngIf="characters">
-        <demo-character *ngFor="let character of characters" [character]="character" (changed)="notificationCenter.notify($event)"></demo-character>
-      </ng-container>
-    </div>
+<main>
+  <demo-chat [globalNotification]="globalMessage"></demo-chat>
 </main>

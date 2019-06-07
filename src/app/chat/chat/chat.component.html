@@ -1,0 +1,18 @@
+<div *ngIf="globalNotification" class="global-message">
+  <div> Global notification </div>
+  <div>{{globalNotification.value}}</div>
+</div>
+
+<mat-form-field *ngIf="!accountService.user">
+  <input #user
+         matInput
+         type="text"
+         placeholder="Enter user name to continue"
+         (keyup.enter)="joinAsUser(user.value)" />
+</mat-form-field>
+
+<demo-message-creator *ngIf="accountService.user" (send)="sendMessage($event)"></demo-message-creator>
+
+<div *ngIf="messages && accountService.user">
+  <demo-message-holder *ngFor="let message of messages" class="message" [message]="message" [enableEdit]="message.user.name === accountService.user.name" (updateMessage)="updateMessage($event)"></demo-message-holder>
+</div>

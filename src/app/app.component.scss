@@ -1,40 +1,11 @@
 :host {
-  position: relative;
+  width: 100%;
 
-  mat-toolbar div {
+  ::ng-deep mat-form-field {
     width: 100%;
   }
 
-  main {
-    height: 100%;
-    width: 100%;
-
-    header {
-      display: flex;
-      width: 100%;
-
-      demo-search-field {
-        margin: auto;
-
-        ::ng-deep .mat-form-field-label {
-          color: black;
-        }
-
-        ::ng-deep .mat-form-field-underline {
-          background-color: black;
-        }
-      }
-    }
-
-    div.main {
-      display: flex;
-      flex-wrap: wrap;
-      flex-flow: row wrap;
-
-      demo-character {
-        flex: 1 0 21%; /* explanation below */
-        margin: 5px;
-      }
-    }
+  input {
+    width :100%;
   }
 }

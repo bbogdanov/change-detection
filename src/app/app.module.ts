@@ -7,11 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { SearchModule } from './search/search.module';
 import { HttpClientModule } from '@angular/common/http';
-import { StarWarsModule } from './star-wars/star-wars.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotificationCenterService } from './notification-center.service';
+import { ChatModule } from './chat/chat.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,12 +21,12 @@ import { NotificationCenterService } from './notification-center.service';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    SearchModule,
-    StarWarsModule,
+    ChatModule,
 
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    MatFormFieldModule,
     MatSnackBarModule
   ],
   providers: [
