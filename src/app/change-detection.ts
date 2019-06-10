@@ -1,10 +1,10 @@
 import { SimpleChanges, ElementRef, OnChanges } from '@angular/core';
 
-export class ChangeDetectionPresenter implements OnChanges {
+export class CDViewer implements OnChanges {
 
   constructor(private element: ElementRef<HTMLElement>) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.element.nativeElement.classList.add('changesAreTriggered');
 
     setTimeout(() => {

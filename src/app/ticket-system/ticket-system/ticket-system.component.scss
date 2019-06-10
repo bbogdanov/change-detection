@@ -1,0 +1,27 @@
+form {
+  margin: 1em;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid gray;
+
+  > * {
+    padding: 1em;
+
+    box-sizing: border-box;
+  }
+}
+
+mat-list-item {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 20px;
+  }
+}

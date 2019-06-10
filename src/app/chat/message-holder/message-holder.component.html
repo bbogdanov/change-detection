@@ -1,5 +1,0 @@
-<span class="message__user">{{message.user.name}}</span>
-<span class="message__inner-sparator">:</span>
-<span *ngIf="!editMode" class="message__content">{{message.content}}</span>
-<input *ngIf="editMode" class="message__content" (keyup.enter)="updateMessage.emit(message); triggerEdit();" [(ngModel)]="message.content" />
-<demo-edit-button *ngIf="enableEdit" (triggerEdit)="triggerEdit()" mat-icon-button></demo-edit-button>

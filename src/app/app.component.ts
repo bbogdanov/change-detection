@@ -1,42 +1,33 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationCenterService } from './notification-center.service';
-import { AccountService } from './chat/account.service';
-import { Socket } from 'ngx-socket-io';
+import { tickets } from './tickets';
+import { Ticket } from './ticket-system/ticket';
 
 @Component({
   selector: 'demo-root',
-  templateUrl: './app.component.html',
+  template: `
+    <mat-toolbar style="display: flex">
+      <div style="display: block; flex:1;">
+        On Push - why and when <b style="color: #693761a4">Demo</b>
+      </div>
+      <div style="display: block; flex: 1;color:rgb(25, 105, 101);">
+        Default strategy
+      </div>
+    </mat-toolbar>
+
+    <main>
+      <demo-ticket-system [data]="tickets" [users]="users" (add)="addTicket($event)"></demo-ticket-system>
+    </main>
+  `,
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  tickets = tickets;
+  users = tickets.map((ticket) => ticket.user);
 
-  globalMessage: { value: string };
+  constructor(notificationCenter: NotificationCenterService) {}
 
-  constructor(
-    public accountService: AccountService,
-    private socket: Socket,
-    notificationCenter: NotificationCenterService,
-    element: ElementRef
-  ) {
-  }
-
-  ngOnInit() {
-    this.socket.on('globalMessage', (message: { value: string }) => {
-     this.globalMessage = message;
-    });
-  }
-
-  changeGlobalMessage(value: string) {
-    this.socket.emit('globalMessage', { value });
-  }
-
-  searchFor(text: string) {
-    // if (text) {
-    //   this.characters = this.allCharacters.filter(character => {
-    //     return character.name.indexOf(text) > -1;
-    //   });
-    // } else {
-    //   this.characters = this.allCharacters;
-    // }
+  addTicket(ticket: Ticket) {
+    this.tickets.push(ticket);
   }
 }
