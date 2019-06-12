@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NotificationCenterService } from './notification-center.service';
 import { TicketSystemModule } from './ticket-system/ticket-system.module';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { TicketSystemModule } from './ticket-system/ticket-system.module';
     MatSnackBarModule
   ],
   providers: [
-    NotificationCenterService
   ],
   bootstrap: [AppComponent]
 })

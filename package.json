@@ -24,6 +24,7 @@
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "hammerjs": "^2.0.8",
+    "immutable": "^4.0.0-rc.12",
     "ngx-socket-io": "^2.1.1",
     "rxjs": "~6.5.2",
     "socket.io": "^2.2.0",

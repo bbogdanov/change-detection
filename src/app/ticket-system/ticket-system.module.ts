@@ -10,10 +10,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { TicketCreateComponent } from './ticket-create/ticket-create.component';
+import { TicketSearchComponent } from './ticket-search/ticket-search.component';
 
 @NgModule({
-  declarations: [TicketSystemComponent],
-  exports: [TicketSystemComponent],
+  declarations: [TicketSystemComponent, TicketCreateComponent, TicketSearchComponent],
+  exports: [TicketSystemComponent, TicketSearchComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
